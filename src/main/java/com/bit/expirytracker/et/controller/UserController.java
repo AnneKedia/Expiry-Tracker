@@ -11,13 +11,19 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.bit.expirytracker.et.entity.User;
+import com.bit.expirytracker.et.service.MessageService;
 import com.bit.expirytracker.et.service.UserService;
+import com.bit.expirytracker.et.utils.SMSRequest;
+
 
 @RestController
 public class UserController {
 
 	@Autowired
 	private UserService service;
+	
+	@Autowired
+	private MessageService messageService;
 	
 	@PostMapping("/addUser")
 	public User addUser(@RequestBody User user) {
@@ -27,6 +33,11 @@ public class UserController {
 	@PostMapping("/addUsers")
 	public List<User> addUsers(@RequestBody List<User> users) {
 		return service.saveUsers(users);
+	}
+	
+	@PostMapping("/sendSMS")
+	public void sendSMS(@RequestBody SMSRequest smsRequest) {
+		messageService.sendMessage(smsRequest);
 	}
 	
 	@GetMapping("/users")

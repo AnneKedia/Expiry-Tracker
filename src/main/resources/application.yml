@@ -1,0 +1,5 @@
+twilio:
+ account_sid: ACace7b9ebb09e5de07b92afe00c4b285f
+ auth_token: ba0f62f1ad75678e2f15204428dffdce
+ trail_number: +12017719943
+ whatsapp_number: whatsapp:+14155238886
