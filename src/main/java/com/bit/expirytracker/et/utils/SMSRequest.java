@@ -21,7 +21,6 @@ public class SMSRequest {
 		super();
 		this.phoneNumber = phoneNumber;
 		this.message = message;
-		System.out.println(phoneNumber);
 	}
 
 	public String getPhoneNumber() {
