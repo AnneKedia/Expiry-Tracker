@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/custom.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script>
+$(document).ready(function(){
+	$("#userRegister").submit(function(event){
+		event.preventDefault();
+const formData={
+		username:$("#username").val(),
+		email:$("#email").val(),
+		password:$("#password").val(),
+		phone:$("#phone").val()
+}
+const jsonString=JSON.stringify(formData);
+console.log(jsonString)
+const xhr= new XMLHttpRequest();
+xhr.open("POST","/addUser");
+xhr.setRequestHeader("Content-Type","application/json");
+xhr.send(jsonString);
+xhr.onloadend = function() {
+    if (xhr.status == 200) {
+      alert("success");
+    } else {
+      alert("error " + this.status);
+    }
+  };
+});
+});
+</script>
+</head>
+<body>
+	<div class="row">
+		<form class="col-md-4 user-form" id="userRegister">
+			<div class="row form-group">
+				<label for="username">UserName:</label> <input type="text"
+					class="form-control" id="username" placeholder="Enter UserName"
+					name="username" required>
+			</div>
+			<div class="row form-group">
+				<label for="email">Email:</label> <input type="email"
+					class="form-control" id="email" placeholder="Enter Email"
+					name="email" required>
+			</div>
+			<div class="row form-group">
+				<label for="password">Password:</label> <input type="password"
+					class="form-control" id="password" placeholder="Enter Password"
+					name="password" required>
+			</div>
+			<div class="row form-group">
+				<label for="phone">Phone:</label> <input type="number"
+					class="form-control" id="phone" placeholder="Enter Phone Number"
+					name="phone">
+			</div>
+			<div class="row">
+				<button type="submit" class="btn btn-success">Submit</button>
+			</div>
+		</form>
+		<div class="col-md-4 form-right"></div>
+	</div>
+	<script>
+
+</script>
+</body>
+</html>
