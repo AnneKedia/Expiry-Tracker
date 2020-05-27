@@ -1,5 +1,8 @@
 .welcome-title {
 	margin: 5px 10px;
+	margin-left: 35%;
+	    font-family: -webkit-body;
+    font-weight: 700;
 }
 
 .user-logout {
@@ -50,7 +53,14 @@
 
 .product-container-parent {
 	height: 600px;
-	background: aquamarine
+	background: rgba(93, 84, 240, 0.5);
+	/* background: -webkit-linear-gradient(left, rgba(0,168,255,0.5), rgba(185,0,255,0.5)); */
+	background: -o-linear-gradient(left, rgba(0, 168, 255, 0.5),
+		rgba(41, 88, 96, 0.5));
+	background: -moz-linear-gradient(left, rgba(0, 168, 255, 0.5),
+		rgba(41, 88, 96, 0.5));
+	background: linear-gradient(left, rgba(0, 168, 255, 0.5),
+		rgba(41, 88, 96, 0.5));
 }
 
 .product-form-container-parent::before {

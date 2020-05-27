@@ -73,6 +73,8 @@ $(document).ready(function() {
 		        		// instead of a settings object
 		        		]
 		        	});
+		            $('.slick-prev').hide();
+		            $('.slick-next').hide();
 		        },
 		        fail:function(){
 		        	console.log("fail");
