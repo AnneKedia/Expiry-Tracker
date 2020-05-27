@@ -4,9 +4,6 @@ import com.bit.expirytracker.et.entity.Product;
 import java.text.SimpleDateFormat;  
 import java.util.Date;
 
-  
-
-
 public class DaysLeft {
 	private int days;
 	

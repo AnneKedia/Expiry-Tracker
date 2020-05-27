@@ -1,8 +1,178 @@
 .user-form {
-	background: url("/images/contact_background.png");
-	margin: 10%;
+	margin: 2% 35%;
+	border: 2px solid;
+	border-radius: 10px;
+	padding: 40px;
+	box-shadow: aliceblue 1px 1px 10px 5px;
+	background: rgb(0, 0, 0, 0.5);
+	width: 25%;
 }
-.form-right{
-	background: url("/images/contact_background.png");
+
+.register-title {
+	margin-left: 42%;
+}
+.user-name{
+	display:inline-block;
+	}
+.user-register-logo {
+	margin-left: 40%;
+	font-size: 45px;
+	margin-top: -5%;
+}
+
+.register-link {
+	background: transparent;
+	color: aliceblue;
+	padding: 8.5px;
+	border-radius: 5px;
+	border: solid 1px aliceblue;
+	margin-left: 80px;
+}
+
+.register-link:hover {
+	text-decoration: none;
+	color: black;
+	background: aliceblue;
+}
+
+.login-form-button {
+	margin-top: 35px;
+}
+
+.login-submit {
+	border-radius: 5px;
+	border: solid 1px aliceblue;
+	background: transparent;
+	color: aliceblue;
+	padding: 7px;
+	margin-left: 35px;
+}
+
+.login-submit:hover {
+	background: aliceblue;
+	color: black;
+}
+
+.form-right {
 	height: 100px;
+}
+
+.otp-input {
+	width: 30%;
+}
+
+.otp-form {
+	margin: 5px 10px;
+}
+
+.register-submit {
+	margin: 35px 33% 0;
+	background: transparent;
+	color: aliceblue;
+}
+
+.register-submit:hover {
+	background: aliceblue;
+	color: black;
+}
+
+.resend-otp-link {
+	margin-top: 2%;
+	display: inline-block;
+	color: aliceblue;
+	text-decoration: underline;
+}
+
+.otp-modal {
+	background: rgb(41, 88, 96, 0.9);
+}
+.welcome-title{
+	margin: 5px 10px;
+}
+.welcome-banner{
+	background: background: rgb(41, 88, 96, 1);
+}
+.otp-submit {
+	
+}
+
+.otp-btn {
+	background: transparent;
+	color: aliceblue;
+}
+
+.otp-btn:hover {
+	background: aliceblue;
+	color: black;
+}
+
+.register-body {
+	background: url("/images/background1.jpg");
+	color: aliceblue;
+	padding: 0;
+	margin: 0;
+}
+
+.date-label {
+	display: block;
+}
+
+.product-year {
+	display: inline-block;
+	width: 16%;
+}
+
+.product-month {
+	display: inline-block;
+	width: 13%;
+}
+
+.product-date {
+	display: inline-block;
+	width: 12%;
+}
+.product-item{
+	background: white;
+	border: 2px solid grey;
+	border-radius: 5px;
+	padding:5px;
+	text-align:center;
+	
+}
+.slick-slide {
+    margin: 0 27px;
+  }
+  /* the parent */
+  .slick-list {
+    margin: 0 -27px;
+  }
+.product-img{
+	height: 150px;
+	margin: auto;
+	width:80%;
+}
+.product-data{
+	margin-top: 10%;
+}
+@media only screen and (max-width: 600px) {
+	.user-name{
+	display:inline-block;
+	}
+	.user-form {
+		margin: 2% 10%;
+		background: transparent;
+		width: 80%;
+	}
+	.register-title {
+		margin-left: 30%;
+	}
+	.register-submit {
+		margin: 35px 28% 0;
+	}
+	.login-submit {
+		margin-left: 20px;
+	}
+	.register-link {
+		margin-left: 30px;
+	}
 }

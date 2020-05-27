@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.bit.expirytracker.et.entity.Product;
 import com.bit.expirytracker.et.service.ProductService;
@@ -71,9 +72,10 @@ public class ProductController {
 		return service.updateProduct(product);
 	}
 
-	@DeleteMapping("/deleteProduct/{id}")
-	public String deleteProduct(@PathVariable int id) {
-		return service.deleteProduct(id);
+	@GetMapping("/deleteProduct/{id}")
+	public ModelAndView deleteProduct(@PathVariable int id) {
+		service.deleteProduct(id);
+		return new ModelAndView("/index.html");
 	}
 
 }

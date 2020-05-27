@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Login Expiry Tracker</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/fontawesome/css/all.css">
+<link rel="stylesheet" href="css/custom.css">
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+</head>
+<body class="container-fluid register-body">
+	<div class="overlay-form">
+		<h2 class="row register-title">Login User</h2>
+		<div class="row">
+			<form class="col-md-4 user-form form-signin" method="post"
+				action="/loginUser">
+				<div class="user-registration-image">
+					<i class="fas fa-door-open user-register-logo"></i>
+				</div>
+				<div class="row form-group">
+					<label for="email">Email:</label> <input type="email" id="username"
+						name="username" class="form-control" placeholder="Email" required
+						autofocus>
+				</div>
+				<div class="row form-group">
+					<label for="password">Password:</label> <input type="password"
+						id="password" name="password" class="form-control"
+						placeholder="Password" required>
+				</div>
+				<div class="row login-form-button">
+					<button type="submit" class="btn btn-default login-submit">
+						Log In <i class="fas fa-sign-in-alt"></i>
+					</button>
+					<a href="register.html" class="register-link">
+						Register Me <i class="fas fa-user-plus"></i>
+					</a>
+
+				</div>
+			</form>
+		</div>
+	</div>
+
+
+</body>
+</html>

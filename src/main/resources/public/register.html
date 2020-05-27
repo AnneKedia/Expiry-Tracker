@@ -2,45 +2,162 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Register Here</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/fontawesome/css/all.css">
 <link rel="stylesheet" href="css/custom.css">
+
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script>
 $(document).ready(function(){
+	var otp;
+	//const Swal = require('sweetalert2');
+	$("#resendOtp").click(function(){
+		$.ajax({
+		    url: '/getotp',
+		    type: 'get',
+		    success: function (data) {
+		        otp=data;
+		        const smsData={
+		        		phoneNumber:"+91"+$("#phone").val(),
+		        		message:"Your OTP for Expiry Tracker Registration is: "+otp
+		        }
+		        const mailData={
+		        		mail:$("#email").val(),
+		        		subject:"OTP for Expiry Tracker Registration",
+		        		message:"Your OTP for Expiry Tracker Registration is: "+otp
+		        }
+		        $.ajax({
+		            url: '/sendSMS',
+		            type: 'post',
+		            contentType: 'application/json',
+		            success: function (data) {
+		                console.log("sms sent");
+		                Swal.fire({
+		                	  icon: 'success',
+		                	  title: 'OTP Sent',
+		                	  showConfirmButton: false,
+		                	  timer: 1500
+		                	})
+		            },
+		            data: JSON.stringify(smsData)
+		        });
+		        $.ajax({
+		            url: '/sendMail',
+		            type: 'post',
+		            contentType: 'application/json',
+		            success: function (data) {
+		            	console.log("mail sent");
+		            },
+		            data: JSON.stringify(mailData)
+		        });
+		    }
+		});
+		return false;
+	});
 	$("#userRegister").submit(function(event){
-		event.preventDefault();
-const formData={
-		username:$("#username").val(),
-		email:$("#email").val(),
-		password:$("#password").val(),
-		phone:$("#phone").val()
-}
-const jsonString=JSON.stringify(formData);
-console.log(jsonString)
+		$( "#modalButton" ).trigger( "click" );
 const xhr= new XMLHttpRequest();
-xhr.open("POST","/addUser");
-xhr.setRequestHeader("Content-Type","application/json");
-xhr.send(jsonString);
-xhr.onloadend = function() {
-    if (xhr.status == 200) {
-      alert("success");
-    } else {
-      alert("error " + this.status);
-    }
-  };
+$.ajax({
+    url: '/getotp',
+    type: 'get',
+    success: function (data) {
+        otp=data;
+        const smsData={
+        		phoneNumber:"+91"+$("#phone").val(),
+        		message:"Your OTP for Expiry Tracker Registration is: "+otp
+        }
+        const mailData={
+        		mail:$("#email").val(),
+        		subject:"OTP for Expiry Tracker Registration",
+        		message:"Your OTP for Expiry Tracker Registration is: "+otp
+        }
+        $.ajax({
+            url: '/sendSMS',
+            type: 'post',
+            contentType: 'application/json',
+            success: function (data) {
+                console.log("sms sent");
+            },
+            data: JSON.stringify(smsData)
+        });
+        $.ajax({
+            url: '/sendMail',
+            type: 'post',
+            contentType: 'application/json',
+            success: function (data) {
+            	console.log("mail sent");
+            },
+            data: JSON.stringify(mailData)
+        });
+        $("#otpform").submit(function(event){
+    		event.preventDefault();
+    	if($("#otp").val()==otp){
+    		$("#otp").val("");
+    	xhr.open("POST","/addUser");
+    	xhr.setRequestHeader("Content-Type","application/json");
+    	const formData={
+    			username:$("#username").val(),
+    			email:$("#email").val(),
+    			password:$("#password").val(),
+    			phone:"+91"+$("#phone").val()
+    	}
+    	const jsonString=JSON.stringify(formData);
+        xhr.send(jsonString);
+        xhr.onloadend = function() {
+        	//console.log(xhr.status);
+            if (xhr.status == 200) {
+              Swal.fire({
+            	  icon: 'success',
+            	  title: 'Your registration is succesfull',
+            	  showConfirmButton: false,
+            	  timer: 1500
+            	})
+              $("input:text").val("");
+              setTimeout(function(){ window.location.replace("index.html"); }, 1500);
+            } else {
+            	Swal.fire({
+            		  icon: 'error',
+            		  title: 'Oops...',
+            		  text: 'Something went wrong!',
+            		  footer: 'Cannot register you right now'+this.status
+            		})
+            }
+          };
+    	} else {
+    		Swal.fire({
+    			  icon: 'error',
+    			  title: 'Oops...',
+    			  text: 'Invalid OTP!',
+    			  footer: 'Give it another go!!'
+    			})
+    		$("#otp").val("");
+    	}
+        });
+          
+    },
+});
+return false;
 });
 });
 </script>
 </head>
-<body>
+<body class="container-fluid register-body">
+<div class="overlay-form">
+<h2 class="row register-title">
+Register User
+</h2>
 	<div class="row">
 		<form class="col-md-4 user-form" id="userRegister">
+		<div class="user-registration-image">
+		<i class="fas fa-users user-register-logo"></i>
+		</div>
 			<div class="row form-group">
 				<label for="username">UserName:</label> <input type="text"
 					class="form-control" id="username" placeholder="Enter UserName"
@@ -59,16 +176,49 @@ xhr.onloadend = function() {
 			<div class="row form-group">
 				<label for="phone">Phone:</label> <input type="number"
 					class="form-control" id="phone" placeholder="Enter Phone Number"
-					name="phone">
+					name="phone" required>
 			</div>
 			<div class="row">
-				<button type="submit" class="btn btn-success">Submit</button>
+				<button type="submit" id="registerButton" class="btn btn-default register-submit">Register Me <i class="fas fa-user-plus"></i></button>
+				<input type="hidden"  data-toggle="modal" data-target="#myModal" id="modalButton">
 			</div>
 		</form>
-		<div class="col-md-4 form-right"></div>
 	</div>
-	<script>
+	</div>
+	<form id="otpform">
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog">
 
-</script>
+				<!-- Modal content-->
+				<div class="modal-content otp-modal">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">OTP Confirmation</h4>
+					</div>
+					<div class="modal-body">
+
+						<div class="row form-group otp-form">
+							<label for="otp">OTP:</label> <input type="number"
+								class="form-control otp-input" id="otp" placeholder="Enter OTP" name="otp"
+								required>
+							<div>
+								<a href="" id="resendOtp" class="resend-otp-link">Resend Otp <i class="far fa-comment"></i></a>
+							</div>
+						</div>
+
+
+					</div>
+					<div class="modal-footer">
+												
+						<button class="btn btn-default otp-submit otp-btn" type="submit">Submit OTP <i class="fas fa-mobile"></i></button>
+							
+						<button type="button" class="btn btn-default otp-btn" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</form>
 </body>
 </html>

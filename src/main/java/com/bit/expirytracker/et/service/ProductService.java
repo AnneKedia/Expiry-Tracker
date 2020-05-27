@@ -16,6 +16,14 @@ public class ProductService {
 	private ProductRepository repository;
 	
 	public Product saveProduct(Product product) {
+		  DaysLeft calculate= new DaysLeft();
+		  try {
+			if(calculate.calculateDays(product)<=0) {
+				  return null;
+			  }
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		  return repository.save(product);
 			
 		}

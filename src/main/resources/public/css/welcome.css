@@ -1,0 +1,141 @@
+.welcome-title {
+	margin: 5px 10px;
+}
+
+.user-logout {
+	display: inline-block;
+	margin-left: 20px;
+	margin-top: 25px;
+	width: 15%;
+	color: aliceblue;
+}
+
+.expired {
+	font-size: 20px;
+	font-weight: 800;
+}
+
+.days-left {
+	font-size: 21px;
+}
+
+.user-logout:hover {
+	color: aliceblue;
+	text-decoration: underline;
+}
+
+.name-container {
+	margin: 5px 10px;
+}
+
+.welcome-banner {
+	background: rgb(41, 88, 96, 1);
+	color: aliceblue;
+}
+
+.no-product-title {
+	margin-top: 100px;
+}
+
+.add-product-button {
+	margin: 30px 35%;
+	background: #295860;
+	color: white;
+}
+
+.add-product-button:hover {
+	background: white;
+	color: #295860;
+}
+
+.product-container-parent {
+	height: 600px;
+	background: aquamarine
+}
+
+.product-form-container-parent::before {
+	content: "";
+	display: block;
+	position: absolute;
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: rgba(93, 84, 240, 0.5);
+	/* background: -webkit-linear-gradient(left, rgba(0,168,255,0.5), rgba(185,0,255,0.5)); */
+	background: -o-linear-gradient(left, rgba(0, 168, 255, 0.5),
+		rgba(41, 88, 96, 0.5));
+	background: -moz-linear-gradient(left, rgba(0, 168, 255, 0.5),
+		rgba(41, 88, 96, 0.5));
+	background: linear-gradient(left, rgba(0, 168, 255, 0.5),
+		rgba(41, 88, 96, 0.5));
+}
+
+.product-delete {
+	cursor: pointer;
+	padding: 15px;
+	font-size: 25px;
+}
+
+.product-delete:hover {
+	color: red;
+}
+
+.date-red {
+	color: red;
+}
+
+.date-yellow {
+	color: orange;
+}
+
+.date-green {
+	color: green;
+}
+
+.product-container {
+	margin-top: 150px;
+	color: #295860;
+}
+
+.product-form-container-parent {
+	background: url(../images/background4.jpg);
+	color: aliceblue;
+	height: 600px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	background-blend-mode: hard-light;
+	position: relative;
+	z-index: 1;
+}
+
+.product-form-container {
+	margin-top: 150px;
+	padding: 0 50px;
+}
+
+@media only screen and (max-width: 600px) {
+	.user-logout {
+		margin: 0 0 0 60px;
+	}
+	.product-container-parent {
+		margin-top: -1px;
+		padding-top: 1px;
+	}
+	.product-container {
+		margin-top: 45px;
+	}
+	.product-form-container-parent {
+		margin-top: -325px;
+		border-radius: 5px;
+	}
+	.product-form-container {
+		margin-top: 190px;
+		padding: 60px 60px;
+	}
+	.add-product-button {
+		margin: 30px 25%;
+	}
+}

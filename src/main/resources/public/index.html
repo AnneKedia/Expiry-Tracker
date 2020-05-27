@@ -1,14 +1,80 @@
-<html>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Welcome</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/custom.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<title>Welcome To Expiry Tracker</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/fontawesome/css/all.css">
+<link rel="stylesheet" href="css/custom.css">
+<link rel="stylesheet" href="css/welcome.css">
+<link rel="stylesheet" type="text/css"
+	href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="js/userHome.js"></script>
 </head>
-<body>
-	<h1>Welcome</h1>
-	<a href="register.html">Register User</a>
+<body class="container-fluid welcome-body">
+	<div class="row welcome-banner">
+		<h1 class="welcome-title">Welcome To Expiry Tracker</h1>
+		<div class="row name-container">
+		<h2 class="col-md-10 col-sm-9 user-name">
+			Hi <span id="nameContainer"></span>
+		</h2>
+		<a class="user-logout col-sm-3" href="/logout">Logout <i class="fas fa-sign-out-alt"></i></a>
+		</div>
+	</div>
+	<div class="row welcome-main">
+		<div class="col-md-8 product-container-parent">
+		<div class=" product-container">
+			<div class="slick-carousel" id="productCarousel"></div>
+			</div>
+		</div>
+		<div class="col-md-4 product-form-container-parent">
+		<div class=" product-form-container">
+			<form class="product-form" id="productForm" method="post">
+				<div class="row form-group">
+					<label for="name">Name:</label> <input type="text"
+						class="form-control" id="name" placeholder="Enter Name"
+						name="name" required>
+				</div>
+				<div class="row form-group">
+					<label for="type">Type:</label> <select class="form-control"
+						id="type" required>
+						<option value="food">Food
+						</option>
+						<option value="medicine">Medicine
+						</option>
+						<option value="cosmetic">Cosmetic
+						</option>
+						<option value="drinks">Drinks
+						</option>
+					</select>
+				</div>
+				<div class="row form-group">
+					<label for="quantity">Quantity:</label> <input type="number"
+						class="form-control" id="quantity" placeholder="Enter Quantity"
+						name="quantity" required>
+				</div>
+				<div class="row form-group">
+					<label class="date-label" for="date">Date:</label> <input
+						type="date" class="form-control" id="date" placeholder="Date"
+						name="date" required>
+				</div>
+				<div class="row form-group">
+					<button type="submit" class="btn btn-default add-product-button">
+						Add Product <i class="fas fa-plus"></i>
+					</button>
+				</div>
+			</form>
+			</div>
+		</div>
+
+	</div>
+	<script type="text/javascript"
+		src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 </body>
 </html>
